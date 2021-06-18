@@ -208,6 +208,7 @@
             background: #EF6C00;
             opacity: 0.5;
             z-index: 50;
+            top: -50px;
             display: none;
         }
         .donut-box {
@@ -224,12 +225,10 @@
         }
         .wrap.cleave-w .cleave-box {
             display: block;
-            top: -50px;
             left: -100px;
         }
         .wrap.cleave-e .cleave-box {
             display: block;
-            top: -50px;
             left: 250px;
         }
         .wrap.donut .donut-box {
@@ -309,11 +308,108 @@
         }
 
         @media screen and (max-width: 480px) {
-            .wrap {
+            body {
                 width: 100%;
-                margin: 0;
-                transform: scale(0.7) translateX(-16%);
+                overflow-x: hidden;
             }
+            .title {
+                margin-top: 30px;
+            }
+            .wrap {
+                width: 350px;
+                height: 350px;
+                margin: 40px auto;
+            }
+            .block {
+                width: 70px;
+                height: 70px;
+            }
+            .fn, .fs, .n, .s { left: 140px; }
+            .fs { top: 280px }
+            .fe { left: 280px }
+            .fw { left: 0 }
+            .nw, .w, .sw { left: 70px }
+            .ne, .e, .se { left: 210px }
+            .n, .ne, .nw { top: 70px; }
+            .fe, .e, .fw, .w { top: 140px }
+            .s, .se, .sw { top: 210px }
+
+            .n:after,
+            .s:after,
+            .fw:after,
+            .fe:after {
+                width: 120px;
+                height: 50px;
+            }
+
+            .fs:after,
+            .fn:after,
+            .w:after,
+            .e:after {
+                width: 50px;
+                height: 120px;
+            }
+
+            .role {
+                font-size: 0.8rem;
+                width: 35px;
+                height: 35px;
+            }
+
+            .mt { top: 100px; left: 215px }
+            .r1 { top: 30px; left: 170px }
+            .ot { top: 215px; left: 100px }
+            .r2 { top: 285px; left: 170px }
+            .h1 { top: 170px; left: 30px }
+            .m1 { top: 100px; left: 100px }
+            .h2 { top: 170px; left: 285px }
+            .m2 { top: 215px; left: 215px }
+
+            .cleave-box {
+                width: 210px;
+                height: 420px;
+                top: -35px;
+            }
+            .donut-box {
+                width: 210px;
+                height: 210px;
+                top: 70px;
+                left: 70px;
+                box-shadow: 0 0 1px 105px #EF6C00;
+            }
+            .wrap.cleave-w .cleave-box {
+                display: block;
+                left: -35px;
+            }
+            .wrap.cleave-e .cleave-box {
+                display: block;
+                left: 175px;
+            }
+            .wrap.donut .donut-box {
+                display: block;
+            }
+
+            .wrap.cleave-w .mt,
+            .wrap.cleave-w .ot { left: 215px }
+            .wrap.cleave-w .m1 { left: 170px }
+            .wrap.cleave-w .m2 { top: 170px }
+            .wrap.cleave-w .h1 { top: 215px; left: 170px }
+
+            .wrap.cleave-e .r1,
+            .wrap.cleave-e .mt,
+            .wrap.cleave-e .h2,
+            .wrap.cleave-e .r2 { left: 145px }
+            .wrap.cleave-e .ot { top: 170px; left: 100px }
+            .wrap.cleave-e .m2 { top: 215px; left: 100px }
+            .wrap.cleave-e .h2 { top: 215px }
+
+            .wrap.donut .mt { left: 215px }
+            .wrap.donut .r1 { top: 75px }
+            .wrap.donut .h1 { left: 75px }
+            .wrap.donut .h2 { left: 240px }
+            .wrap.donut .ot { left: 100px }
+            .wrap.donut .r2 { top: 240px }
+
             .btn-group {
                 margin: 0;
                 flex-direction: column;
