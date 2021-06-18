@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E9S</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 class="title">E9S - Platforms</h1>
+
+    <div class="wrap">
+        <div class="role h1">h1</div>
+        <div class="role h2">h2</div>
+        <div class="role mt">mt</div>
+        <div class="role ot">ot</div>
+        <div class="role m1">m1</div>
+        <div class="role m2">m2</div>
+        <div class="role r1">r1</div>
+        <div class="role r2">r2</div>
+
+        <div class="cleave-box"></div>
+        <div class="donut-box"></div>
+
+        <div class="block ne">
+            <div class="box"><span class="dir">ne</span></div>
+        </div>
+        <div class="block n">
+            <div class="box"><span class="dir">n</span></div>
+        </div>
+        <div class="block fn">
+            <div class="box"><span class="dir">fn</span></div>
+        </div>
+        <div class="block nw">
+            <div class="box"><span class="dir">nw</span></div>
+        </div>
+        <div class="block w">
+            <div class="box"><span class="dir">w</span></div>
+        </div>
+        <div class="block fw">
+            <div class="box"><span class="dir">fw</span></div>
+        </div>
+        <div class="block se">
+            <div class="box"><span class="dir">se</span></div>
+        </div>
+        <div class="block e">
+            <div class="box"><span class="dir">e</span></div>
+        </div>
+        <div class="block fe">
+            <div class="box"><span class="dir">fe</span></div>
+        </div>
+        <div class="block sw">
+            <div class="box"><span class="dir">sw</span></div>
+        </div>
+        <div class="block s">
+            <div class="box"><span class="dir">s</span></div>
+        </div>
+        <div class="block fs">
+            <div class="box"><span class="dir">fs</span></div>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn toggler" data-toggle="cleave-w">Cleave West (H1)</button>
+        <button class="btn toggler" data-toggle="cleave-e">Cleave East (H2)</button>
+        <button class="btn toggler" data-toggle="donut">Donut</button>
+    </div>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box }
+        html, body {
+            height: 100%;
+        }
+        body { background: #263238; font-family: sans-serif }
+        .title {
+            font-size: 1.5rem;
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .wrap {
+            width: 500px;
+            height: 500px;
+            margin: 50px auto 50px;
+            position: relative;
+        }
+        .block {
+            z-index: 10;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            padding: 3px;
+        }
+        .box {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            background: #BDBDBD;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        .dir {
+            font-size: 1rem;
+            font-weight: bold;
+            opacity: 0.5;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        .fn, .fs, .n, .s { left: 200px; }
+        .fs { top: 400px }
+        .fe { left: 400px }
+        .fw { left: 0 }
+        .nw, .w, .sw { left: 100px }
+        .ne, .e, .se { left: 300px }
+        .n, .ne, .nw { top: 100px; }
+        .fe, .e, .fw, .w { top: 200px }
+        .s, .se, .sw { top: 300px }
+        .role {
+            z-index: 100;
+            position: absolute;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #FFF;
+            text-transform: uppercase;
+            display: flex;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background: #f60;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            transition: 1s ease-out all;
+        }
+        .mt, .ot { background: #0D47A1 }
+        .h1, .h2 { background: #7CB342 }
+        .m1, .m2, .r1, .r2 { background: #ef5350 }
+        .mt { top: 150px; left: 310px }
+        .r1 { top: 50px; left: 250px }
+        .ot { top: 310px; left: 150px }
+        .r2 { top: 410px; left: 250px }
+        .h1 { top: 250px; left: 50px }
+        .m1 { top: 150px; left: 150px }
+        .h2 { top: 250px; left: 410px }
+        .m2 { top: 310px; left: 310px }
+
+        .n:after,
+        .fn:after,
+        .s:after,
+        .fs:after,
+        .w:after,
+        .e:after,
+        .fw:after,
+        .fe:after {
+            content: '';
+            position: absolute;
+            border-radius: 5px;
+            opacity: 0.4;
+            transition: 300ms linear all;
+        }
+
+        .n:after,
+        .s:after,
+        .fw:after,
+        .fe:after {
+            width: 180px;
+            height: 80px;
+            background: #0D47A1;
+            top: 10px;
+            left: 10px;
+        }
+        .fw:after,
+        .fe:after {
+            background: #7CB342;
+        }
+        .s:after, .fe:after {
+            left: auto;
+            right: 10px;
+        }
+
+        .fs:after,
+        .fn:after,
+        .w:after,
+        .e:after {
+            width: 80px;
+            height: 180px;
+            background: #ef5350;
+            top: 10px;
+            left: 10px;
+        }
+        .fs:after,
+        .w:after {
+            top: auto;
+            bottom: 10px;
+        }
+
+        .cleave-box {
+            width: 350px;
+            height: 600px;
+            position: absolute;
+            background: #EF6C00;
+            opacity: 0.5;
+            z-index: 50;
+            display: none;
+        }
+        .donut-box {
+            display: none;
+            position: absolute;
+            z-index: 50;
+            top: 100px;
+            left: 100px;
+            width: 300px;
+            height: 300px;
+            box-shadow: 0 0 1px 150px #EF6C00;
+            opacity: 0.5;
+            border-radius: 600px;
+        }
+        .wrap.cleave-w .cleave-box {
+            display: block;
+            top: -50px;
+            left: -100px;
+        }
+        .wrap.cleave-e .cleave-box {
+            display: block;
+            top: -50px;
+            left: 250px;
+        }
+        .wrap.donut .donut-box {
+            display: block;
+        }
+
+        .wrap.cleave-w .mt,
+        .wrap.cleave-w .ot { left: 310px }
+        .wrap.cleave-w .m1 { left: 250px }
+        .wrap.cleave-w .m2 { top: 250px }
+        .wrap.cleave-w .h1 { top: 310px; left: 250px }
+
+        .wrap.cleave-e .r1,
+        .wrap.cleave-e .mt,
+        .wrap.cleave-e .h2,
+        .wrap.cleave-e .r2 { left: 210px }
+        .wrap.cleave-e .ot { top: 250px; left: 150px }
+        .wrap.cleave-e .m2 { top: 310px; left: 150px }
+        .wrap.cleave-e .h2 { top: 310px }
+
+        .wrap.donut .mt { left: 310px }
+        .wrap.donut .r1 { top: 110px }
+        .wrap.donut .h1 { left: 110px }
+        .wrap.donut .h2 { left: 350px }
+        .wrap.donut .ot { left: 150px }
+        .wrap.donut .r2 { top: 350px }
+
+        .wrap.donut .n:after,
+        .wrap.cleave-w .n:after,
+        .wrap.cleave-e .n:after,
+        .wrap.donut .fn:after,
+        .wrap.cleave-w .fn:after,
+        .wrap.cleave-e .fn:after,
+        .wrap.donut .s:after,
+        .wrap.cleave-w .s:after,
+        .wrap.cleave-e .s:after,
+        .wrap.donut .fs:after,
+        .wrap.cleave-w .fs:after,
+        .wrap.cleave-e .fs:after,
+        .wrap.donut .w:after,
+        .wrap.cleave-w .w:after,
+        .wrap.cleave-e .w:after,
+        .wrap.donut .e:after,
+        .wrap.cleave-w .e:after,
+        .wrap.cleave-e .e:after,
+        .wrap.donut .fw:after,
+        .wrap.cleave-w .fw:after,
+        .wrap.cleave-e .fw:after,
+        .wrap.donut .fe:after,
+        .wrap.cleave-w .fe:after,
+        .wrap.cleave-e .fe:after {
+            opacity: 0;
+        }
+
+        .btn-group {
+            display: flex;
+            width: 100%;
+            margin: 100px auto 0;
+            justify-content: center;
+        }
+        .btn {
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 7px 15px;
+            margin: 0 10px;
+            border: none;
+            outline: none;
+            background: #616161;
+            border-radius: 3px;
+            color: #BDBDBD;
+            cursor: pointer;
+        }
+        .btn.active {
+            background: #EF6C00;
+            color: #fff;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('.toggler').on('click', function() {
+                var toggleClass = $(this).attr('data-toggle');
+                var wrap = $('.wrap');
+                if ($(this).hasClass('active')) {
+                    wrap.attr('class', 'wrap');
+                } else {
+                    wrap.attr('class', 'wrap ' + toggleClass);
+                }
+                $(this).toggleClass('active');
+                $(this).siblings('.btn').removeClass('active');
+            });
+        })
+    </script>
+</body>
+</html>
