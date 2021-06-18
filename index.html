@@ -86,7 +86,7 @@
         .wrap {
             width: 500px;
             height: 500px;
-            margin: 50px auto 50px;
+            margin: 100px auto 50px;
             position: relative;
         }
         .block {
@@ -306,6 +306,25 @@
         .btn.active {
             background: #EF6C00;
             color: #fff;
+        }
+
+        @media screen and (max-width: 480px) {
+            .wrap {
+                width: 100%;
+                margin: 0;
+                transform: scale(0.7) translateX(-16%);
+            }
+            .btn-group {
+                margin: 0;
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                display: block;
+                width: 220px;
+                height: 40px;
+                margin: 0 0 10px;
+            }
         }
     </style>
     <script>
