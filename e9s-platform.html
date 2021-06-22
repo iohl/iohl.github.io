@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E9S - Platform</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="platform.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1 class="title">
+        <a class="crumb" href="index.html">Home</a>
+        E9S - Platform
+    </h1>
+
+    <div class="wrap">
+        <div class="role h1">h1</div>
+        <div class="role h2">h2</div>
+        <div class="role mt">mt</div>
+        <div class="role ot">ot</div>
+        <div class="role m1">m1</div>
+        <div class="role m2">m2</div>
+        <div class="role r1">r1</div>
+        <div class="role r2">r2</div>
+
+        <div class="cleave-box"></div>
+        <div class="donut-box"></div>
+
+        <div class="block ne">
+            <div class="box"><span class="dir">ne</span></div>
+        </div>
+        <div class="block n">
+            <div class="box"><span class="dir">n</span></div>
+        </div>
+        <div class="block fn">
+            <div class="box"><span class="dir">fn</span></div>
+        </div>
+        <div class="block nw">
+            <div class="box"><span class="dir">nw</span></div>
+        </div>
+        <div class="block w">
+            <div class="box"><span class="dir">w</span></div>
+        </div>
+        <div class="block fw">
+            <div class="box"><span class="dir">fw</span></div>
+        </div>
+        <div class="block se">
+            <div class="box"><span class="dir">se</span></div>
+        </div>
+        <div class="block e">
+            <div class="box"><span class="dir">e</span></div>
+        </div>
+        <div class="block fe">
+            <div class="box"><span class="dir">fe</span></div>
+        </div>
+        <div class="block sw">
+            <div class="box"><span class="dir">sw</span></div>
+        </div>
+        <div class="block s">
+            <div class="box"><span class="dir">s</span></div>
+        </div>
+        <div class="block fs">
+            <div class="box"><span class="dir">fs</span></div>
+        </div>
+        <div class="block boss">
+            <div class="box"><span class="dir"></span></div>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn toggler" data-toggle="cleave-w">Cleave West (H1)</button>
+        <div class="mx"></div>
+        <button class="btn toggler" data-toggle="cleave-e">Cleave East (H2)</button>
+        <div class="mx"></div>
+        <button class="btn toggler" data-toggle="donut">Donut</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.toggler').on('click', function() {
+                var toggleClass = $(this).attr('data-toggle');
+                var wrap = $('.wrap');
+                if ($(this).hasClass('active')) {
+                    wrap.attr('class', 'wrap');
+                } else {
+                    wrap.attr('class', 'wrap ' + toggleClass);
+                }
+                $(this).toggleClass('active');
+                $(this).siblings('.btn').removeClass('active');
+            });
+        })
+    </script>
+</body>
+</html>

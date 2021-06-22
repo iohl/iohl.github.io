@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E9S - Brambles</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="brambles.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+            crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1 class="title">
+        <a class="crumb" href="index.html">Home</a>
+        E9S - Brambles
+    </h1>
+
+    <div class="wrap">
+        <div class="area">
+            <div class="inner-square"></div>
+        </div>
+
+        <div class="marker ma">A</div>
+        <div class="marker mb">B</div>
+        <div class="marker mc">C</div>
+        <div class="marker md">D</div>
+
+        <div class="marker m1">1</div>
+        <div class="marker m2">2</div>
+        <div class="marker m3">3</div>
+        <div class="marker m4">4</div>
+
+        <div class="boss">
+            <div class="side-aoe"></div>
+            <div class="tether"></div>
+        </div>
+
+        <div class="role h1">h1</div>
+        <div class="role h2">h2</div>
+        <div class="role mt">mt</div>
+        <div class="role ot">ot</div>
+        <div class="role m1">m1</div>
+        <div class="role m2">m2</div>
+        <div class="role r1">r1</div>
+        <div class="role r2">r2</div>
+    </div>
+
+    <div class="btn-group">
+        <button class="btn start-mode" data-mode="brambles">Brambles (Easy)</button>
+        <div class="mx"></div>
+        <button class="btn start-mode" data-mode="brambles-towers">Brambles + Towers</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            function reset() {
+                var boss = $('.boss');
+                var role = $('.role');
+                var marker = $('.marker');
+                marker.removeClass('seed');
+                marker.removeClass('tower');
+                boss.removeClass('rotated');
+                boss.removeClass('tethered');
+                boss.removeClass('saoe');
+                role.removeClass('seed');
+                role.removeClass('stacked');
+                role.removeClass('stacked-n');
+                role.removeClass('switch');
+            }
+            function bramblesMode() {
+                $('.role').addClass('seed');
+                setTimeout(function () {
+                    $('.marker').addClass('seed');
+                    $('.boss').addClass('rotated');
+                }, 800);
+                setTimeout(function () {
+                    $('.boss').addClass('tethered')
+                }, 1000);
+                setTimeout(function () {
+                    $('.role').addClass('stacked');
+                }, 1300);
+                setTimeout(function () {
+                    $('.role').addClass('switch');
+                }, 2600);
+                setTimeout(function () {
+                    $('.boss').addClass('saoe');
+                }, 3000);
+            }
+            function towerMode() {
+                $('.role').addClass('seed');
+                setTimeout(function () {
+                    $('.marker').addClass('seed');
+                }, 800);
+                setTimeout(function () {
+                    $('.role').addClass('stacked-n');
+                }, 1300);
+                setTimeout(function () {
+                    $('.marker').addClass('tower');
+                }, 2300)
+                setTimeout(function () {
+                    $('.role').addClass('switch');
+                }, 2600);
+                setTimeout(function () {
+                    $('.role').addClass('tower');
+                }, 3600);
+            }
+            $('.start-mode').click(function () {
+                reset();
+                $(this).siblings('.btn').removeClass('active');
+                if (!$(this).hasClass('active')) {
+                    let mode = $(this).attr('data-mode');
+                    $(this).addClass('active');
+                    if (mode === 'brambles') {
+                        bramblesMode();
+                    } else if (mode === 'brambles-towers') {
+                        towerMode();
+                    }
+                    var button = $('.btn');
+                    button.prop('disabled', true);
+                    setTimeout(function () {
+                        button.prop('disabled', false);
+                    }, 4000);
+                } else {
+                    $(this).removeClass('active');
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+.wrap {
+    width: 500px;
+    height: 500px;
+    margin: 100px auto 50px;
+    position: relative;
+    overflow: hidden;
+}
+.area {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #BDBDBD;
+    border-radius: 3px;
+}
+.inner-square {
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    top: 85px;
+    left: 85px;
+    border: 5px solid #616161;
+    border-radius: 3px;
+}
+.boss {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url(e9s_cod.png) no-repeat;
+    background-size: 100% auto;
+    border-radius: 100px;
+    top: 200px;
+    left: 200px;
+    border: 2px solid #fff;
+    transition: all linear 0.5s;
+}
+.boss:after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 150px;
+    border: 5px solid #FF4081;
+    top: -32.5px;
+    left: -32.5px;
+    position: absolute;
+    border-radius: 100px;
+}
+.boss:before {
+    content: '';
+    width: 70px;
+    height: 70px;
+    background: url(triangle.png) no-repeat;
+    background-size: 100% auto;
+    position: absolute;
+    top: -43px;
+    left: 45px;
+}
+.boss .tether {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+}
+.boss .tether:before,
+.boss .tether:after {
+    content: '';
+    width: 0;
+    height: 5px;
+    background: #FF6D00;
+    display: block;
+    position: absolute;
+    top: 40px;
+    transition: all linear 0.3s;
+}
+.boss .tether:before {
+    left: -203px;
+}
+.boss .tether:after {
+    right: -203px;
+}
+.boss .side-aoe:before,
+.boss .side-aoe:after {
+    content: '';
+    width: 700px;
+    height: 700px;
+    display: block;
+    position: absolute;
+    top: -302px;
+    background: #EF6C00;
+    opacity: 0;
+    border-radius: 500px;
+    transform: scale(0);
+    transition: all linear 0.3s;
+}
+.boss .side-aoe:before {
+    left: -630px;
+}
+.boss .side-aoe:after {
+    right: -630px;
+}
+.marker {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    z-index: 1;
+}
+.marker:after {
+    content: '';
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border: 1px solid #6A1B9A;
+    background: rgba(106,27,154 ,0.5);
+    top: -29.5px;
+    left: -29.5px;
+    border-radius: 100px;
+    opacity: 0;
+    z-index: -1;
+    transition: all linear 0.3s;
+}
+.marker:before {
+    content: '';
+    width: 100px;
+    height: 100px;
+    border: 2px solid #FFD600;
+    background: #FFE082;
+    opacity: 0;
+    border-radius: 100px;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    display: block;
+    z-index: -2;
+    transform: scale(0);
+    transition: all linear 0.3s;
+}
+.marker.m4:before, .marker.m3:before,
+.marker.md:before, .marker.mc:before {
+    top: -30px;
+}
+.marker.ma, .marker.mb, .marker.mc, .marker.md { border-radius: 50px }
+.marker.m1, .marker.ma { border: 2px solid #F50057; background: #F50057 }
+.marker.m2, .marker.mb { border: 2px solid #FFEA00; background: #FFEA00 }
+.marker.m3, .marker.mc { border: 2px solid #00B0FF; background: #00B0FF }
+.marker.m4, .marker.md { border: 2px solid #AA00FF; background: #AA00FF }
+
+.marker.m1, .marker.m4 { left: 63px }
+.marker.m1, .marker.m2 { top: 135px }
+.marker.m2, .marker.m3 { left: 387px }
+
+.marker.ma, .marker.md { left: 126px }
+.marker.ma, .marker.mb { top: 63px }
+.marker.mb, .marker.mc { left: 324px }
+
+.marker.m4, .marker.m3 { top: 314px }
+.marker.md, .marker.mc { top: 387px }
+
+.marker.ma:before, .marker.m3:before,
+.marker.m2:before, .marker.md:before { left: -100px; }
+.marker.m1:before, .marker.mb:before,
+.marker.m4:before, .marker.mc:before { left: 33px; }
+
+.mt { top: 120px; left: 230px; }
+.r1 { top: 150px; left: 150px; }
+.h1 { top: 230px; left: 120px; }
+.m1 { top: 310px; left: 150px; }
+.h2 { top: 340px; left: 230px; }
+.m2 { top: 310px; left: 310px; }
+.r2 { top: 230px; left: 340px; }
+.ot { top: 150px; left: 310px; }
+
+.marker.seed:after {
+    opacity: 0.5;
+}
+.boss.rotated {
+    transform: rotate(90deg);
+}
+.boss.tethered .tether:before,
+.boss.tethered .tether:after {
+    width: 173px;
+}
+
+.role.mt.seed, .role.ot.seed,
+.role.m1.seed, .role.m2.seed {
+    left: 131px;
+    top: 68px;
+}
+.role.r1.seed, .role.r2.seed,
+.role.h1.seed, .role.h2.seed {
+    left: 68px;
+    top: 140px;
+}
+.role.m1.seed, .role.m2.seed {
+    top: 392px;
+}
+.role.h1.seed, .role.h2.seed {
+    top: 318px;
+}
+.role.ot.seed, .role.m2.seed {
+    left: 328px;
+}
+.role.r2.seed, .role.h2.seed {
+    left: 392px;
+}
+
+.role.stacked  {
+    top: 235px !important;
+    left: 395px !important;
+}
+.role.stacked.mt, .role.stacked.ot,
+.role.stacked.h1, .role.stacked.h2 {
+    left: 67px !important;
+}
+.role.stacked.switch  {
+    top: 235px !important;
+    left: 37px !important;
+}
+.role.stacked.switch.mt, .role.stacked.switch.ot,
+.role.stacked.switch.h1, .role.stacked.switch.h2 {
+    left: 425px !important;
+}
+
+.role.stacked-n  {
+    left: 235px !important;
+    top: 395px !important;
+}
+.role.stacked-n.mt, .role.stacked-n.ot,
+.role.stacked-n.h1, .role.stacked-n.h2 {
+    top: 67px !important;
+}
+.role.stacked-n.switch  {
+    left: 235px !important;
+    top: 37px !important;
+}
+.role.stacked-n.switch.mt, .role.stacked-n.switch.ot,
+.role.stacked-n.switch.h1, .role.stacked-n.switch.h2 {
+    top: 425px !important;
+}
+.role.stacked-n.switch.tower.mt,
+.role.stacked-n.switch.tower.m1,
+.role.stacked-n.switch.tower.m2 {
+    left: 150px !important;
+    top: 150px !important;
+}
+.role.stacked-n.switch.tower.mt,
+.role.stacked-n.switch.tower.ot {
+    top: 300px !important;
+}
+.role.stacked-n.switch.tower.m2,
+.role.stacked-n.switch.tower.ot {
+    left: 300px !important;
+}
+.role.stacked-n.switch.tower.h1,
+.role.stacked-n.switch.tower.r1 {
+    left: 50px !important;
+    top: 50px !important;
+}
+.role.stacked-n.switch.tower.h1,
+.role.stacked-n.switch.tower.h2 {
+    top: 400px !important;
+}
+.role.stacked-n.switch.tower.r2,
+.role.stacked-n.switch.tower.h2 {
+    left: 415px !important;
+}
+
+.boss.saoe .side-aoe:before,
+.boss.saoe .side-aoe:after {
+    transform: scale(1);
+    opacity: 0.5;
+}
+
+.marker.tower:before {
+    transform: scale(1);
+    opacity: 0.5;
+}

@@ -1,0 +1,299 @@
+.wrap {
+    width: 500px;
+    height: 500px;
+    margin: 100px auto 50px;
+    position: relative;
+}
+.block {
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    padding: 3px;
+}
+.box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: #BDBDBD;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.dir {
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.5;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.fn, .fs, .n, .s { left: 200px }
+.fs { top: 400px }
+.fe { left: 400px }
+.fw { left: 0 }
+.nw, .w, .sw { left: 100px }
+.ne, .e, .se { left: 300px }
+.n, .ne, .nw { top: 100px; }
+.fe, .e, .fw, .w { top: 200px }
+.s, .se, .sw { top: 300px }
+.boss { left: 200px; top: 200px; position: relative; }
+.boss .box {
+    display: block;
+    border-radius: 100px;
+    background: url(e9s_cod.png) no-repeat;
+    background-size: 100% auto;
+    border: 2px solid #fff;
+}
+.boss:after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 150px;
+    border: 5px solid #FF4081;
+    top: -32.5px;
+    left: -32.5px;
+    position: absolute;
+    border-radius: 100px;
+}
+
+.mt { top: 150px; left: 310px }
+.r1 { top: 50px; left: 230px }
+.ot { top: 310px; left: 150px }
+.r2 { top: 410px; left: 230px }
+.h1 { top: 230px; left: 50px }
+.m1 { top: 150px; left: 150px }
+.h2 { top: 230px; left: 410px }
+.m2 { top: 310px; left: 310px }
+
+.n:after,
+.fn:after,
+.s:after,
+.fs:after,
+.w:after,
+.e:after,
+.fw:after,
+.fe:after {
+    content: '';
+    position: absolute;
+    border-radius: 5px;
+    opacity: 0.4;
+    transition: 300ms linear all;
+}
+
+.n:after,
+.s:after,
+.fw:after,
+.fe:after {
+    width: 180px;
+    height: 80px;
+    background: #0D47A1;
+    top: 10px;
+    left: 10px;
+}
+.fw:after,
+.fe:after {
+    background: #7CB342;
+}
+.s:after, .fe:after {
+    left: auto;
+    right: 10px;
+}
+
+.fs:after,
+.fn:after,
+.w:after,
+.e:after {
+    width: 80px;
+    height: 180px;
+    background: #ef5350;
+    top: 10px;
+    left: 10px;
+}
+.fs:after,
+.w:after {
+    top: auto;
+    bottom: 10px;
+}
+
+.cleave-box {
+    width: 350px;
+    height: 600px;
+    position: absolute;
+    background: #EF6C00;
+    opacity: 0.5;
+    z-index: 50;
+    top: -50px;
+    display: none;
+}
+.donut-box {
+    display: none;
+    position: absolute;
+    z-index: 50;
+    top: 145px;
+    left: 145px;
+    width: 210px;
+    height: 210px;
+    box-shadow: 0 0 1px 150px #EF6C00;
+    opacity: 0.5;
+    border-radius: 600px;
+}
+.wrap.cleave-w .cleave-box {
+    display: block;
+    left: -100px;
+}
+.wrap.cleave-e .cleave-box {
+    display: block;
+    left: 250px;
+}
+.wrap.donut .donut-box {
+    display: block;
+}
+
+.wrap.cleave-w .mt,
+.wrap.cleave-w .ot { left: 310px }
+.wrap.cleave-w .m1 { left: 250px }
+.wrap.cleave-w .m2 { top: 250px }
+.wrap.cleave-w .h1 { top: 310px; left: 250px }
+.wrap.cleave-w .r1,
+.wrap.cleave-w .r2 { left: 250px }
+
+.wrap.cleave-e .m1 { top: 210px }
+.wrap.cleave-e .mt { left: 150px }
+.wrap.cleave-e .h2 { left: 210px; top: 150px }
+.wrap.cleave-e .r1,
+.wrap.cleave-e .m2,
+.wrap.cleave-e .r2 { left: 210px }
+
+.wrap.donut .m1 { top: 160px; left: 160px }
+.wrap.donut .m2 { top: 300px; left: 300px }
+.wrap.donut .mt { left: 300px; top: 160px }
+.wrap.donut .r1 { top: 150px }
+.wrap.donut .h1 { left: 150px }
+.wrap.donut .h2 { left: 310px }
+.wrap.donut .ot { left: 160px; top: 300px; }
+.wrap.donut .r2 { top: 310px }
+
+.wrap.donut .n:after,
+.wrap.cleave-w .n:after,
+.wrap.cleave-e .n:after,
+.wrap.donut .fn:after,
+.wrap.cleave-w .fn:after,
+.wrap.cleave-e .fn:after,
+.wrap.donut .s:after,
+.wrap.cleave-w .s:after,
+.wrap.cleave-e .s:after,
+.wrap.donut .fs:after,
+.wrap.cleave-w .fs:after,
+.wrap.cleave-e .fs:after,
+.wrap.donut .w:after,
+.wrap.cleave-w .w:after,
+.wrap.cleave-e .w:after,
+.wrap.donut .e:after,
+.wrap.cleave-w .e:after,
+.wrap.cleave-e .e:after,
+.wrap.donut .fw:after,
+.wrap.cleave-w .fw:after,
+.wrap.cleave-e .fw:after,
+.wrap.donut .fe:after,
+.wrap.cleave-w .fe:after,
+.wrap.cleave-e .fe:after {
+    opacity: 0;
+}
+
+@media screen and (max-width: 480px) {
+    .wrap {
+        width: 350px;
+        height: 350px;
+        margin: 40px auto;
+    }
+    .block {
+        width: 70px;
+        height: 70px;
+    }
+    .fn, .fs, .n, .s { left: 140px; }
+    .fs { top: 280px }
+    .fe { left: 280px }
+    .fw { left: 0 }
+    .nw, .w, .sw { left: 70px }
+    .ne, .e, .se { left: 210px }
+    .n, .ne, .nw { top: 70px; }
+    .fe, .e, .fw, .w { top: 140px }
+    .s, .se, .sw { top: 210px }
+
+    .n:after,
+    .s:after,
+    .fw:after,
+    .fe:after {
+        width: 120px;
+        height: 50px;
+    }
+
+    .fs:after,
+    .fn:after,
+    .w:after,
+    .e:after {
+        width: 50px;
+        height: 120px;
+    }
+
+    .role {
+        font-size: 0.8rem;
+        width: 35px;
+        height: 35px;
+    }
+
+    .mt { top: 100px; left: 215px }
+    .r1 { top: 30px; left: 170px }
+    .ot { top: 215px; left: 100px }
+    .r2 { top: 285px; left: 170px }
+    .h1 { top: 170px; left: 30px }
+    .m1 { top: 100px; left: 100px }
+    .h2 { top: 170px; left: 285px }
+    .m2 { top: 215px; left: 215px }
+
+    .cleave-box {
+        width: 210px;
+        height: 420px;
+        top: -35px;
+    }
+    .donut-box {
+        width: 210px;
+        height: 210px;
+        top: 70px;
+        left: 70px;
+        box-shadow: 0 0 1px 105px #EF6C00;
+    }
+    .wrap.cleave-w .cleave-box {
+        display: block;
+        left: -35px;
+    }
+    .wrap.cleave-e .cleave-box {
+        display: block;
+        left: 175px;
+    }
+    .wrap.donut .donut-box {
+        display: block;
+    }
+
+    .wrap.cleave-w .mt,
+    .wrap.cleave-w .ot { left: 215px }
+    .wrap.cleave-w .m1 { left: 170px }
+    .wrap.cleave-w .m2 { top: 170px }
+    .wrap.cleave-w .h1 { top: 215px; left: 170px }
+
+    .wrap.cleave-e .r1,
+    .wrap.cleave-e .mt,
+    .wrap.cleave-e .h2,
+    .wrap.cleave-e .r2 { left: 145px }
+    .wrap.cleave-e .ot { top: 170px; left: 100px }
+    .wrap.cleave-e .m2 { top: 215px; left: 100px }
+    .wrap.cleave-e .h2 { top: 215px }
+
+    .wrap.donut .mt { left: 215px }
+    .wrap.donut .r1 { top: 75px }
+    .wrap.donut .h1 { left: 75px }
+    .wrap.donut .h2 { left: 240px }
+    .wrap.donut .ot { left: 100px }
+    .wrap.donut .r2 { top: 240px }
+}
