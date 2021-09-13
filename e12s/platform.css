@@ -1,0 +1,77 @@
+.platform {
+    width: 600px;
+    height: 600px;
+    background: #5e36d9;
+    border-radius: 600px;
+    margin: 100px auto;
+    position: relative;
+}
+.platform .circ {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 250px;
+    height: 250px;
+    border: 3px solid white;
+    opacity: 0.2;
+    border-radius: 125px;
+}
+.platform .circ:nth-child(1) { left: 175px; }
+.platform .circ:nth-child(3) { left: 350px; top: 175px; }
+.platform .circ:nth-child(5) { left: 175px; top: 350px; }
+.platform .circ:nth-child(7) { top: 175px; }
+.platform .circ:nth-child(2) { left: 300px; top: 53px; }
+.platform .circ:nth-child(4) { left: 298px; top: 300px; }
+.platform .circ:nth-child(6) { left: 53px; top: 52px; }
+.platform .circ:nth-child(8) { left: 52px; top: 298px; }
+.platform .circ.mid { left: 175px; top: 175px; }
+
+.platform .wm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 60px;
+    height: 60px;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 2rem;
+    text-shadow: 0 0 2px black;
+}
+.platform .wm.a, .platform .wm.b, .platform .wm.c, .platform .wm.d { border-radius: 60px }
+.platform .wm.a,
+.platform .wm.n1 {
+    color: #F50057;
+    border-color: #F50057;
+    background: rgba(245, 0, 87, 0.2);
+}
+.platform .wm.a { top: 100px; left: 272px; }
+.platform .wm.n1 { top: 150px; left: 152px; }
+.platform .wm.b,
+.platform .wm.n2 {
+    color: #FFEA00;
+    border-color: #FFEA00;
+    background: rgba(255, 234, 0, 0.2);
+}
+.platform .wm.b { top: 270px; left: 445px; }
+.platform .wm.n2 { top: 150px; left: 390px; }
+.platform .wm.c,
+.platform .wm.n3 {
+    color: #00B0FF;
+    border-color: #00B0FF;
+    background: rgba(0, 176, 255, 0.2);
+}
+.platform .wm.c { top: 445px; left: 272px; }
+.platform .wm.n3 { top: 390px; left: 390px; }
+.platform .wm.d,
+.platform .wm.n4 {
+    color: #da7eff;
+    border-color: #da7eff;
+    background: rgba(170, 0, 255, 0.2);
+}
+.platform .wm.d { top: 270px; left: 95px; }
+.platform .wm.n4 { top: 390px; left: 152px; }

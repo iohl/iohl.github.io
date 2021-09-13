@@ -1,0 +1,19 @@
+* { margin: 0; padding: 0; box-sizing: border-box }
+html, body {
+    height: 100%;
+}
+body { background: #263238; font-family: sans-serif }
+.title {
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.tool {
+    display: block;
+    width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+}

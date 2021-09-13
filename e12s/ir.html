@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E12S Intermediate Relativity</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="platform.css">
+    <link rel="stylesheet" href="ir.css">
+</head>
+<body>
+    <div id="root">
+        <div class="tool">
+            <div class="control" style="min-width: 100px">
+                <div class="select">
+                    <label for="role">Role</label>
+                    <select id="role">
+                        <option value="MT">MT</option>
+                        <option value="OT">OT</option>
+                        <option value="H1">H1</option>
+                        <option value="H2">H2</option>
+                        <option value="R1">R1</option>
+                        <option value="R2">R2</option>
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                    </select>
+                </div>
+                <button id="start" class="btn">Generate</button>
+            </div>
+            <div class="info" style="min-width: 150px">
+                <div class="debuffs">
+                </div>
+            </div>
+            <div class="hint" style="display: none">
+                <ul>
+                    <li>Order is always from right to left. Longest countdown to the shortest countdown.</li>
+                    <li>When placing center marker that is not Gaze make sure <strong>not to stay in between Gaze</strong>. Just place it slightly off the center a bit. </li>
+                </ul>
+                <div class="debuffs"></div>
+            </div>
+        </div>
+
+        <div id="platform" class="platform">
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ mid"></div>
+
+            <div class="wm a">A</div>
+            <div class="wm n1">1</div>
+            <div class="wm b">B</div>
+            <div class="wm n2">2</div>
+            <div class="wm c">C</div>
+            <div class="wm n3">3</div>
+            <div class="wm d">D</div>
+            <div class="wm n4">4</div>
+
+            <div class="debuffs"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            var role = 'MT';
+            var debuffs = ['flare', 'wind', 'aoe', 'gaze', 'blizzard', 'stack'];
+            var debuffHints = {
+                'flare': 'EXPLOOOSON! Place it at the edge of the platform from your way mark.',
+                'wind': 'BIG AOE with KB! Place it at the edge of the platform from your way mark.',
+                'aoe': 'AOE! Place it at your way mark',
+                'gaze': 'DOOM Master! Place it at the center.',
+                'blizzard': 'DONUT AOE! Place it at the center.',
+                'stack': 'STACK! Place it slighty off the center.'
+            }
+            function makeSet() {
+                var results = [];
+                while (results.length < 3) {
+                    var d = debuffs[Math.round(Math.random() * 5)];
+                    if (results.indexOf(d) === -1) results.push(d);
+                }
+                return results;
+            }
+            function getPos(role, edge) {
+                var x, y = 0;
+                switch (role) {
+                    case 'M1':
+                        x = edge ? 70 : 155;
+                        y = edge ? 480 : 395;
+                        break;
+                    case 'M2':
+                        x = edge ? 485 : 400;
+                        y = edge ? 480 : 395;
+                        break;
+                    case 'R1':
+                        x = edge ? 70 : 155;
+                        y = edge ? 50 : 155;
+                        break;
+                    case 'R2':
+                        x = edge ? 485 : 400;
+                        y = edge ? 50 : 155;
+                        break;
+                    case 'MT':
+                        x = 277;
+                        y = edge ? 0 : 105;
+                        break;
+                    case 'OT':
+                        x = 280;
+                        y = edge ? 560 : 450;
+                        break;
+                    case 'H1':
+                        y = 277;
+                        x = edge ? 0 : 105;
+                        break;
+                    case 'H2':
+                        y = 277;
+                        x = edge ? 560 : 450;
+                        break;
+
+                }
+                return [x, y]
+            }
+            function placeDebuff(role, type, order) {
+                var style = 'position: absolute;';
+                switch (type) {
+                    case 'blizzard':
+                        style += 'top: 285px; left: 277px;'
+                        break;
+                    case 'gaze':
+                        style += 'top: 260px; left: 277px;'
+                        break;
+                    case 'stack':
+                        style += 'top: 285px; left: 297px;'
+                        break;
+                    case 'flare':
+                    case 'wind':
+                    case 'aoe':
+                        var [x, y] = getPos(role, type !== 'aoe');
+                        style += 'top: '+ y +'px; left: '+ x +'px;';
+                        break;
+                }
+                var el = '<div class="db '+ type +'" style="'+ style +'z-index: '+ order +'"><div class="order-tick">'+ order +'</div></div>';
+                $('#platform .debuffs').append(el);
+            }
+            function init() {
+                $('#start').attr('disabled', 'disabled');
+                $('.hint').show();
+                var debuffs = $('.info .debuffs');
+                var hints = $('.hint .debuffs')
+                debuffs.empty();
+                hints.empty();
+                $('#platform .debuffs').empty();
+                var set = makeSet();
+                for (var i = 0; i < set.length; i++) {
+                    var icon = set[i];
+                    var order = set.length - i;
+                    debuffs.append('<span class="db ' + icon + '"></span>');
+                    setTimeout(function (icon, order) {
+                        placeDebuff(role, icon, order)
+                        hints.append('<div class="hint-item"><span class="db ' + icon + '"><div class="order-tick">'+ order +'</div></span><span class="hint-text">'+ debuffHints[icon] +'</span></div>');
+                    }, 1500 * order, icon, order);
+                }
+                setTimeout(function () {
+                    $('#start').removeAttr('disabled');
+                }, 5000);
+            }
+            $('#role').on('change', function(ev) { role = ev.target.value; })
+            $('#start').on('click', init);
+        })
+    </script>
+</body>
+</html>

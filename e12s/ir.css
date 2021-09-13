@@ -1,0 +1,73 @@
+.tool {
+    display: flex;
+    flex-direction: row;
+}
+.control, .info {
+    margin-right: 30px;
+}
+
+.db {
+    position: relative;
+    display: inline-block;
+    background-size: 46px auto;
+    background: #79797a url(ir_debuffs.png) no-repeat;
+    width: 46px;
+    height: 55px;
+}
+.db.wind { background-position: 0 -47px; }
+.db.aoe { background-position: 0 -93px; }
+.db.gaze { background-position: 0 -143px; }
+.db.blizzard { background-position: 0 -193px; }
+.db.stack { background-position: 0 -240px; }
+.db .order-tick {
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+    font-weight: bold;
+    color: #fff;
+    top: -15px;
+    left: -15px;
+    border: 2px solid #fff;
+    border-radius: 15px;
+}
+
+.hint .debuffs {
+    margin-top: 20px;
+}
+.hint-item {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.hint-text {
+    margin-left: 15px;
+}
+
+.select label {
+    display: block;
+    margin-bottom: 5px;
+}
+.select select {
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    width: 100%;
+    display: block;
+    padding: 10px;
+}
+
+.platform .debuffs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
