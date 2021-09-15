@@ -1,0 +1,116 @@
+.tw {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 75px;
+    background: #B71C1C;
+    border-radius: 30px;
+    position: absolute;
+    z-index: 10;
+}
+.tw .dot {
+    width: 20px;
+    height: 20px;
+    background: #E57373;
+    border-radius: 50px;
+}
+.tw.gold {
+    background: #FFAB00;
+}
+.tw.gold .dot {
+    background: #FFECB3;
+}
+
+.tw.n { top: -50px; left: 285px; }
+.tw.nw { left: 73px; top: 50px; }
+.tw.ne { left: 483px; top: 50px; }
+.tw.w { left: -20px; top: 260px; }
+.tw.e { left: 583px; top: 260px; }
+.tw.sw { left: 73px; top: 483px; }
+.tw.se { left: 483px; top: 483px; }
+
+.tether {
+    width: 300px;
+    height: 15px;
+    background: purple;
+    border-radius: 10px;
+    position: absolute;
+    box-shadow: 0 0 10px #9C27B0;
+}
+.tether.gold {
+    background: #FFEE58;
+    box-shadow: 0 0 10px #FFF59D;
+    z-index: 5;
+}
+.tether.w { left: 0; top: 290px; }
+.tether.e { left: 290px; top: 290px; }
+.tether.ne {
+    transform: rotate(135deg);
+    left: 260px;
+    top: 190px;
+}
+.tether.nw {
+    transform: rotate(45deg);
+    left: 50px;
+    top: 190px;
+}
+.tether.sw {
+    transform: rotate(-45deg);
+    top: 400px;
+    left: 50px;
+}
+.tether.se {
+    transform: rotate(-135deg);
+    top: 400px;
+    left: 256px;
+}
+
+.db {
+    position: relative;
+    display: inline-block;
+    background-size: 40px auto !important;
+    width: 40px;
+    height: 50px;
+    transition: all ease-in 600ms;
+}
+.db.ice { background: url(ice.png) no-repeat; }
+.db.fire { background: url(fire.png) no-repeat; }
+.db.gaze { background: #192332 url(gaze.png) no-repeat; }
+.db.water { background: url(water.png) no-repeat; }
+
+.db.fire:after {
+    content: '';
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    background: #f60;
+    top: -50px;
+    left: -50px;
+    opacity: 0;
+    border-radius: 300px;
+    transition: all ease-out 300ms;
+}
+.db.fire.trigger:after {
+    width: 150px;
+    height: 150px;
+    opacity: 0.5;
+}
+
+.db.ice:after {
+    content: '';
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    box-shadow: 0 0 0 10px transparent;
+    top: -13px;
+    left: -17px;
+    opacity: 0;
+    border-radius: 300px;
+    transition: all ease-out 300ms;
+}
+.db.ice.trigger:after {
+    box-shadow: 0 0 0 70px #07b4ff;
+    opacity: 0.5;
+}

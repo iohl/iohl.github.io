@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E12S Basic Relativity</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="platform.css">
+    <link rel="stylesheet" href="br.css">
+</head>
+<body>
+    <div id="root">
+        <div class="tool">
+            <div class="control" style="min-width: 100px">
+                <div class="select">
+                    <label for="role">Role</label>
+                    <select id="role">
+                        <option value="MT">MT</option>
+                        <option value="OT">OT</option>
+                        <option value="H1">H1</option>
+                        <option value="H2">H2</option>
+                        <option value="R1">R1</option>
+                        <option value="R2">R2</option>
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                    </select>
+                </div>
+                <div class="select">
+                    <label for="debuff">Debuff</label>
+                    <select id="debuff">
+                        <option value="gaze">Gaze</option>
+                        <option value="water">Water</option>
+                    </select>
+                </div>
+                <label for="lateMech">
+                    <input id="lateMech" type="checkbox" disabled>
+                    Late Mechanic
+                </label>
+                <label for="adjust">
+                    <input id="adjust" type="checkbox" disabled>
+                    Adjust (Melee DPS only)
+                </label>
+                <button id="start" class="btn">Generate</button>
+            </div>
+        </div>
+        <div id="platform" class="platform">
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ"></div>
+            <div class="circ mid"></div>
+
+            <div class="wm a">A</div>
+            <div class="wm n1">1</div>
+            <div class="wm b">B</div>
+            <div class="wm n2">2</div>
+            <div class="wm c">C</div>
+            <div class="wm n3">3</div>
+            <div class="wm d">D</div>
+            <div class="wm n4">4</div>
+
+            <div class="tw n gold"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="tw ne"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="tw e"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="tw se"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="tw sw"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="tw w"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="tw nw"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+            <div class="tether gold w"></div>
+            <div class="tether gold e"></div>
+            <div class="tether nw"></div>
+            <div class="tether ne"></div>
+    <!--        <div class="tether sw"></div>-->
+    <!--        <div class="tether se"></div>-->
+
+            <div class="debuffs">
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            var role = 'MT';
+            var debuff = 'gaze';
+            var lateMech = false;
+            var adjust = false;
+
+            function getPosSet(role, debuff, adjust) {
+                switch (role) {
+                    case 'MT':
+                    case 'OT':
+                    case 'H1':
+                    case 'H2':
+                        return [];
+                    case 'M1':
+                    case 'R1':
+                        if (debuff === 'fire' || debuff === 'lateFire') {
+                            return [
+                                {x: 280, y: 320},
+                                {x: adjust ? 380: 180, y: 350, trigger: debuff === 'fire'},
+                                {x: 285, y: 150},
+                                {x: debuff === 'fire' ? 285 : (adjust ? 435 : 135), y: 300, trigger: debuff === 'lateFire'},
+                                {x: 285, y: 150},
+                                {x: 120, y: 500},
+                                {x: 160, y: 400}
+                            ]
+                        }
+                        return [
+                            {x: 280, y: 320},
+                            {x: adjust ? 550 : 0, y: 350, trigger: debuff === 'ice'},
+                            {x: 285, y: 150},
+                            {x: 285, y: 300, trigger: debuff === 'lateIce'},
+                            {x: 285, y: 150},
+                            {x: 120, y: 500},
+                            {x: 160, y: 400}
+                        ];
+                    case 'M2':
+                    case 'R2':
+                        if (debuff === 'fire' || debuff === 'lateFire') {
+                            return [
+                                {x: 280, y: 320},
+                                {x: adjust ? 180 : 380, y: 350, trigger: debuff === 'fire'},
+                                {x: 285, y: 150},
+                                {x: debuff === 'fire' ? 285 : (adjust ? 135 : 435), y: 300, trigger: debuff === 'lateFire'},
+                                {x: 285, y: 150},
+                                {x: 450, y: 500},
+                                {x: 400, y: 400}
+                            ]
+                        }
+                        return [
+                            {x: 280, y: 320},
+                            {x: adjust ? 0 : 550, y: 350, trigger: debuff === 'ice'},
+                            {x: 285, y: 150},
+                            {x: 285, y: 300, trigger: debuff === 'lateIce'},
+                            {x: 285, y: 150},
+                            {x: 450, y: 500},
+                            {x: 400, y: 400}
+                        ]
+                }
+            }
+            function init() {
+                $('#start').attr('disabled', 'disabled');
+                var platformDebuffs = $('#platform .debuffs')
+                platformDebuffs.empty();
+
+                var mechDebuff = debuff;
+                if (lateMech) {
+                    if (mechDebuff === 'fire') mechDebuff = 'lateFire';
+                    if (mechDebuff === 'ice') mechDebuff = 'lateIce';
+                }
+
+                console.log(debuff);
+
+                var posSet = getPosSet(role, mechDebuff, adjust);
+                platformDebuffs.append('<div class="db '+ debuff +'"></div>')
+
+                for (var i = 0; i < posSet.length; i++) {
+                    setTimeout(function (x, y, trigger) {
+                        platformDebuffs.find('.db').css({
+                            top: y,
+                            left: x
+                        });
+                        if (trigger) {
+                            setTimeout(function () {
+                                platformDebuffs.find('.db').addClass('trigger');
+                            }, 1000)
+                            setTimeout(function () {
+                                platformDebuffs.find('.db').removeClass('trigger');
+                            }, 2500)
+                        }
+                    }, 2500 * i, posSet[i].x, posSet[i].y, posSet[i].trigger);
+                }
+
+                setTimeout(function () {
+                    $('#start').removeAttr('disabled');
+                }, 16000);
+            }
+
+            $('#role').on('change', function(ev) {
+                role = ev.target.value;
+                if (role === 'M1' || role === 'M2') $('#adjust').removeAttr('disabled');
+                else $('#adjust').attr('disabled', 'disabled');
+
+                $('#debuff').empty();
+                if (role === 'MT' || role === 'OT' || role === 'H1' || role === 'H2') {
+                    $('#lateMech').attr('disabled', 'disabled');
+                    $('#debuff').append('<option value="gaze">Gaze</option>');
+                    $('#debuff').append('<option value="water">Water</option>');
+                    debuff = 'gaze';
+                } else {
+                    $('#lateMech').removeAttr('disabled');
+                    $('#debuff').append('<option value="fire">Fire</option>');
+                    $('#debuff').append('<option value="ice">Ice</option>');
+                    debuff = 'fire';
+                }
+            });
+            $('#debuff').on('change', function (ev) { debuff = ev.target.value })
+            $('#lateMech').on('change', function(ev) { lateMech = (role === 'M1' || role === 'M2' || role === 'R1' || role === 'R2') && ev.target.checked })
+            $('#adjust').on('change', function(ev) { adjust = (role === 'M1' || role === 'M2') && ev.target.checked })
+            $('#start').on('click', init);
+        })
+    </script>
+</body>
+</html>

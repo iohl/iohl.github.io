@@ -1,11 +1,3 @@
-.tool {
-    display: flex;
-    flex-direction: row;
-}
-.control, .info {
-    margin-right: 30px;
-}
-
 .db {
     position: relative;
     display: inline-block;
@@ -34,40 +26,4 @@
     left: -15px;
     border: 2px solid #fff;
     border-radius: 15px;
-}
-
-.hint .debuffs {
-    margin-top: 20px;
-}
-.hint-item {
-    display: flex;
-    margin-bottom: 10px;
-    align-items: center;
-}
-.hint-text {
-    margin-left: 15px;
-}
-
-.select label {
-    display: block;
-    margin-bottom: 5px;
-}
-.select select {
-    width: 100%;
-    padding: 5px 10px;
-    margin-bottom: 15px;
-}
-
-.btn {
-    width: 100%;
-    display: block;
-    padding: 10px;
-}
-
-.platform .debuffs {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
 }

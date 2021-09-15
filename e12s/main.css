@@ -10,10 +10,60 @@ body { background: #263238; font-family: sans-serif }
     margin-top: 50px;
 }
 
+label {
+    display: block;
+    margin-bottom: 15px;
+}
+
 .tool {
     display: block;
     width: 960px;
     margin: 0 auto;
     background: #fff;
-    padding: 30px;
+    padding: 15px;
+}
+
+.tool {
+    display: flex;
+    flex-direction: row;
+    min-height: 300px;
+}
+.control, .info {
+    margin-right: 30px;
+}
+
+.hint .debuffs {
+    margin-top: 20px;
+}
+.hint-item {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.hint-text {
+    margin-left: 15px;
+}
+
+.platform .debuffs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.select label {
+    display: block;
+    margin-bottom: 5px;
+}
+.select select {
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    width: 100%;
+    display: block;
+    padding: 10px;
 }
