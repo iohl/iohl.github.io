@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>P3S Numbers Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">P3S Numbers</h2>
+        <div class="number-panel" id="number">
+            <p>Here is your number:</p>
+            <img src="1.png" alt="Number">
+        </div>
+        <div class="answers">
+            <p>What is your answers?</p>
+            <button class="option" value="1"><img src="1w.png" alt="1 Waymark"></button>
+            <button class="option" value="2"><img src="2w.png" alt="2 Waymark"></button>
+            <button class="option" value="3"><img src="3w.png" alt="3 Waymark"></button>
+            <button class="option" value="4"><img src="4w.png" alt="4 Waymark"></button>
+        </div>
+    </div>
+    <div id="no-modal" class="modal">
+        <div class="no"><img src="no.png" alt="No"></div>
+        <button class="close">I'm Sorry</button>
+    </div>
+
+    <div id="yes-modal" class="modal">
+        <div class="yes"><img src="yes.png" alt="Yes"></div>
+        <button class="close">Next</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

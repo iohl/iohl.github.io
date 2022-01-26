@@ -1,0 +1,104 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: sans-serif;
+    background: #F4511E;
+}
+.container {
+    width: 480px;
+    margin: 50px auto;
+}
+.title {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 15px;
+}
+p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.number-panel {
+    background: #FFE0B2;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.answers {
+    background: #FFE0B2;
+    border-radius: 15px;
+    text-align: center;
+    padding: 30px;
+}
+button.option {
+    outline: none;
+    background: none;
+    border: 1px solid #F4511E;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;
+    width: 100px;
+    height: 170px;
+    position: relative;
+    cursor: pointer;
+}
+button.option img {
+    display: block;
+    width: 120px;
+    top: -5px;
+    left: -10px;
+    position: absolute;
+}
+button.option:hover::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255,0.3);
+    top: 0;
+}
+.modal {
+    background: white;
+    display: none;
+    width: 400px;
+    border-radius: 15px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+.modal.active { display: block; }
+.modal .yes,
+.modal .no {
+    display: block;
+    width: 200px;
+    height: 245px;
+    margin: 0 auto 20px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.modal .yes {
+    width: 100%;
+    height: auto;
+}
+.modal .no img, .modal .yes img { width: 100%; }
+.modal .close {
+    display: block;
+    background: #F4511E;
+    border: none;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 auto;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.modal .close:hover {
+    background: #fd754b;
+}
